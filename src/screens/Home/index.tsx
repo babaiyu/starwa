@@ -1,16 +1,16 @@
 import { connect } from 'react-redux';
 import { AppState } from '../../redux/reducer';
-import actionExample from '../../redux/example/action';
+import { actionMovies } from '../../redux/movies/action';
 
 import Home from './Home';
 
 const mapStateToProps = (state: AppState) => ({
-  example: state.example.data,
-  isLoading: state.example.isLoading
+  movies: state.movies.data,
+  loadMovies: state.movies.isLoading
 });
 
 const mapDispatchToProps = (dispatch: any) => ({
-  actionExample: () => dispatch(actionExample())
+  actionMovies: () => dispatch(actionMovies()),
 });
 
 export default connect(
