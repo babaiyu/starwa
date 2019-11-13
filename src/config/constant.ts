@@ -16,4 +16,5 @@ export const themeColor = {
   blue: '#5294E2',
   green: '#4CAF50',
   lightGray: '#7C818C',
+  transparent: 'rgba(0, 0, 0, 0.7)',
 }

@@ -1,5 +1,6 @@
 import React from 'react';
 import { SafeAreaView, View, Text, FlatList } from 'react-native';
+import Wrap from '../../components/HOC';
 import { Props } from './types';
 import styles from './styles';
 
@@ -43,4 +44,4 @@ class Home extends React.PureComponent<Props> {
   }
 }
 
-export default Home;
+export default Wrap(Home);
