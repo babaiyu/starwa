@@ -1,11 +1,13 @@
 import React from 'react';
-import { View, Text, Image, ScrollView, TouchableWithoutFeedback as Touch, FlatList } from 'react-native';
+import { View, Text, ImageBackground, ScrollView, TouchableWithoutFeedback as Touch, FlatList, TouchableOpacity } from 'react-native';
+import Icon from 'react-native-vector-icons/Feather';
 import dayjs from 'dayjs';
 import Wrap from '../../components/HOC';
 import { Props, State } from './types';
 import styles from './styles';
 import Tabs from '../../components/Tabs';
 import Card from '../../components/Card';
+import { themeColor } from '../../config/constant';
 
 const img = 'https://lumiere-a.akamaihd.net/v1/images/uk_sws-9_teaser-poster_r_002319f4.jpeg?region=0,0,960,1420';
 
@@ -29,9 +31,16 @@ class Detail extends React.PureComponent<Props, State> {
     };
   };
 
+  // Function
   showHide = () => {
     const { hideStory } = this.state;
     this.setState({ hideStory: !hideStory });
+  };
+
+  // Back to Home
+  back = () => {
+    const { navigation: { goBack } } = this.props;
+    goBack();
   };
 
   // Flatlist
@@ -67,11 +76,15 @@ class Detail extends React.PureComponent<Props, State> {
   render() {
     const { selectedMovies } = this.props;
     const { hideStory, detailMovie, detail } = this.state;
-    const { body, content, imgBackground, title, textLight, textHighlight, textReguler, hr, columnDirection } = styles;
+    const { body, content, imgBackground, title, textLight, textHighlight, textReguler, hr, columnDirection, fab } = styles;
     return (
       <View style={body}>
+        <TouchableOpacity onPress={this.back} style={fab}>
+          <Icon name="arrow-left" size={35} color={themeColor.dark} />
+        </TouchableOpacity>
         <ScrollView>
-          <Image source={{ uri: img }} style={imgBackground} resizeMode="cover" />
+          <ImageBackground source={{ uri: img }} style={imgBackground} resizeMode="cover">
+          </ImageBackground>
           <View style={content}>
             <Text style={title}>{selectedMovies.title}</Text>
             <View style={hr} />
@@ -92,12 +105,12 @@ class Detail extends React.PureComponent<Props, State> {
               <View title="Detail" style={columnDirection}>
                 <Text style={title}>Detail</Text>
                 <View style={columnDirection}>
-                <FlatList
-                  data={detail}
-                  renderItem={this.renderDetail}
-                  keyExtractor={this.keyExtractor}
-                  removeClippedSubviews={true}
-                />
+                  <FlatList
+                    data={detail}
+                    renderItem={this.renderDetail}
+                    keyExtractor={this.keyExtractor}
+                    removeClippedSubviews={true}
+                  />
                 </View>
                 <View style={columnDirection}>
                   <FlatList

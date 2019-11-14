@@ -7,8 +7,8 @@ export const fonts = {
 
 export const themeColor = {
   // Dark Theme
-  dark: '#121212',
-  white: '#F8F8F8',
+  dark: '#1C1C1C',
+  white: '#FEFEFE',
   bgWhite: '#F0F0F0',
 
   gray: '#404552',

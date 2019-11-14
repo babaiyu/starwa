@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, Dimensions, ImageBackground, TouchableOpacity as Touch } from 'react-native';
+import { View, Text, Dimensions, Image, TouchableOpacity as Touch } from 'react-native';
 import Carousel from 'react-native-snap-carousel';
 import dayjs from 'dayjs';
 import Card from '../../../components/Card';
@@ -16,8 +16,10 @@ class MyCarousel extends React.PureComponent<Props, object> {
   // Select Movie
   selectMovie = (movie: any) => {
     const { navigation: { navigate }, actionSelectedMovies } = this.props;
-    actionSelectedMovies(movie)
-    navigate('Detail');
+    requestAnimationFrame(() => {
+      actionSelectedMovies(movie)
+      navigate('Detail');
+    })
   };
 
   // Render Item
@@ -28,7 +30,7 @@ class MyCarousel extends React.PureComponent<Props, object> {
         <Card style={contentCard}>
           <View style={rowDirection}>
             <View style={leftCard}>
-              <ImageBackground source={{ uri: img }} style={imgBackground} />
+              <Image source={{ uri: img }} style={imgBackground} />
             </View>
             <View style={rightCard}>
               <Text style={textHeadCard}>{item.title}</Text>

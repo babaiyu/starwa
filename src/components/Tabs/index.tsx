@@ -14,6 +14,12 @@ import styles from './styles';
 
 const Tabs = ({ children }: any) => {
   const [activeTab, changeTab] = React.useState(0);
+  const onPress = (id: number) => {
+    requestAnimationFrame(() => {
+      changeTab(id);
+    });
+  };
+
   return (
     <View style={styles.container}>
       <View style={styles.tabsContainer}>
@@ -23,7 +29,7 @@ const Tabs = ({ children }: any) => {
               styles.tabContainer,
               index === activeTab ? styles.tabContainerActive : [],
             ]}
-            onPress={() => changeTab(index)}
+            onPress={() => onPress(index)}
             key={index}>
             <Text
               style={[
