@@ -31,8 +31,8 @@ const exampleReducer = (state: State = initialState, action: Action): State => {
         ...state,
         isLoading: false,
         data: []
-      }
-  
+      };
+
     default:
       return state;
   }

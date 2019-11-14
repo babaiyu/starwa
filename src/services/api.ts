@@ -7,7 +7,7 @@ const headers = {
     'Content-Type': 'application/json',
     Accept: 'application/json'
   }
-}
+};
 
 // Generate Response to JSON
 export function handleResponse(response: Response) {

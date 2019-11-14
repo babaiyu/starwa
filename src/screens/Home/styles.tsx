@@ -4,7 +4,7 @@ import { fonts, themeColor } from '../../config/constant';
 export default StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: themeColor.dark
+    backgroundColor: themeColor.dark,
   },
   textNote: {
     fontFamily: fonts.fontBold,

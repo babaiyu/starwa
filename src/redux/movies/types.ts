@@ -10,5 +10,5 @@ export interface Action {
 
 export interface State {
   data: any;
-  isLoading: boolean
+  isLoading: boolean;
 }

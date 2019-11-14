@@ -1,8 +1,14 @@
 import React from 'react';
-import { SafeAreaView, View, Text, FlatList } from 'react-native';
+import { SafeAreaView, View, ActivityIndicator, Image, ScrollView } from 'react-native';
+import _ from 'lodash';
 import Wrap from '../../components/HOC';
 import { Props } from './types';
 import styles from './styles';
+import SubHeader from './components/SubHeader';
+import MyCarousel from './components/Carousel';
+import { themeColor } from '../../config/constant';
+
+const img = 'http://www.pngmart.com/files/3/Star-Wars-Characters-PNG-Photos.png';
 
 class Home extends React.PureComponent<Props> {
   componentDidMount() {
@@ -15,30 +21,22 @@ class Home extends React.PureComponent<Props> {
     actionMovies();
   };
 
-  // Flatlist Render Item
-  renderItem = ({ item, index }: any) => {
-    const { textNote } = styles;
-    return (
-      <View key={index}>
-        <Text style={textNote}>{item.title}</Text>
-      </View>
-    )
-  }
-
-  // Flatlist Key Extractor
-  keyExtractor = (_item: any, index: number) => index.toString();
   render() {
     const { loadMovies, movies } = this.props;
     const { container } = styles;
+    const data = _.sortBy(movies, ['episode_id']);
+    const result = _.reverse(data);
     return (
       <SafeAreaView style={container}>
-        <Text>Welcome Home</Text>
-        {loadMovies ? <Text>Loading....</Text> : null}
-        <FlatList
-          keyExtractor={this.keyExtractor}
-          data={movies}
-          renderItem={this.renderItem}
-        />
+        <ScrollView>
+          <SubHeader />
+          {loadMovies
+            ? <ActivityIndicator size="large" color={themeColor.white} /> :
+            <View style={{ marginTop: -25 }}>
+              <MyCarousel data={result} />
+            </View>}
+          <Image source={{ uri: img }} style={{ width: '100%', height: 150, marginTop: 100 }} />
+        </ScrollView>
       </SafeAreaView>
     );
   }

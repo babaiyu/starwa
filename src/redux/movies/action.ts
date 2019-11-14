@@ -26,7 +26,7 @@ export const actionMovies = () => {
       }
       return dispatch(failedMovies('Failed Get API'));
     } catch (err) {
-      return dispatch(failedMovies(err.message))
+      return dispatch(failedMovies(err.message));
     }
-  }
-}
+  };
+};
