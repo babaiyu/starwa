@@ -1,7 +1,8 @@
-import { MOVIES, MOVIES_SUCCESS, MOVIES_FAILED, Action, State } from './types';
+import { MOVIES, MOVIES_SUCCESS, MOVIES_FAILED, SELECTED_MOVIES, Action, State } from './types';
 
 const initialState: State = {
   data: {},
+  selectedMovies: {},
   isLoading: false
 };
 
@@ -26,6 +27,13 @@ const moviesReducer = (state: State = initialState, action: Action): State => {
         isLoading: false,
         data: {}
       };
+
+    case SELECTED_MOVIES:
+      return {
+        ...state,
+        isLoading: false,
+        selectedMovies: action.data
+      }
 
     default:
       return state;

@@ -1,7 +1,9 @@
 import { Dispatch } from 'redux';
-import { MOVIES, MOVIES_SUCCESS, MOVIES_FAILED } from './types';
+import { MOVIES, MOVIES_SUCCESS, MOVIES_FAILED, SELECTED_MOVIES } from './types';
 import { movies } from '../../services/api';
 
+
+// LifeCycle Movies
 const loadingMovies = () => ({
   type: MOVIES
 });
@@ -30,3 +32,8 @@ export const actionMovies = () => {
     }
   };
 };
+
+export const actionSelectedMovies = (data: any) => ({
+  type: SELECTED_MOVIES,
+  data
+});

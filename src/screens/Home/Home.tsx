@@ -1,5 +1,5 @@
 import React from 'react';
-import { SafeAreaView, View, ActivityIndicator, Image, ScrollView } from 'react-native';
+import { SafeAreaView, View, ActivityIndicator, Image, ScrollView, RefreshControl } from 'react-native';
 import _ from 'lodash';
 import Wrap from '../../components/HOC';
 import { Props } from './types';
@@ -21,6 +21,12 @@ class Home extends React.PureComponent<Props> {
     actionMovies();
   };
 
+  // Navigate to Detail
+  goDetail = () => {
+    const { navigation: { navigate } } = this.props;
+    navigate('Detail');
+  }
+
   render() {
     const { loadMovies, movies } = this.props;
     const { container } = styles;
@@ -28,12 +34,15 @@ class Home extends React.PureComponent<Props> {
     const result = _.reverse(data);
     return (
       <SafeAreaView style={container}>
-        <ScrollView>
+        <ScrollView
+          refreshControl={
+            <RefreshControl refreshing={loadMovies} onRefresh={this.getMovies} />
+          }>
           <SubHeader />
           {loadMovies
             ? <ActivityIndicator size="large" color={themeColor.white} /> :
             <View style={{ marginTop: -25 }}>
-              <MyCarousel data={result} />
+              <MyCarousel data={result} {...this.props} />
             </View>}
           <Image source={{ uri: img }} style={{ width: '100%', height: 150, marginTop: 100 }} />
         </ScrollView>

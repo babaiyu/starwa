@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { AppState } from '../../redux/reducer';
-import { actionMovies } from '../../redux/movies/action';
+import { actionMovies, actionSelectedMovies } from '../../redux/movies/action';
 
 import Home from './Home';
 
@@ -11,6 +11,7 @@ const mapStateToProps = (state: AppState) => ({
 
 const mapDispatchToProps = (dispatch: any) => ({
   actionMovies: () => dispatch(actionMovies()),
+  actionSelectedMovies: (payload: any) => dispatch(actionSelectedMovies(payload)),
 });
 
 export default connect(
