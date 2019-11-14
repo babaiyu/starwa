@@ -5,17 +5,26 @@ import dayjs from 'dayjs';
 import Card from '../../../components/Card';
 import { scale } from '../../../utils/ScaleUtils';
 import styles from './styles';
+import { Props } from '../types';
 
 const width = Dimensions.get('window').width;
 
 const img = 'https://lumiere-a.akamaihd.net/v1/images/uk_sws-9_teaser-poster_r_002319f4.jpeg?region=0,0,960,1420';
 
-const MyCarousel = ({ data }: any) => {
+class MyCarousel extends React.PureComponent<Props, object> {
 
-  const renderItem = ({ item, index }: any) => {
+  // Select Movie
+  selectMovie = (movie: any) => {
+    const { navigation: { navigate }, actionSelectedMovies } = this.props;
+    actionSelectedMovies(movie)
+    navigate('Detail');
+  };
+
+  // Render Item
+  renderItem = ({ item, index }: any) => {
     const { contentCard, rowDirection, leftCard, imgBackground, rightCard, textHeadCard, hr, textLight, detail, textBlue } = styles;
     return (
-      <Touch key={index}>
+      <Touch key={index} onPress={() => this.selectMovie(item)}>
         <Card style={contentCard}>
           <View style={rowDirection}>
             <View style={leftCard}>
@@ -40,14 +49,18 @@ const MyCarousel = ({ data }: any) => {
     )
   };
 
-  return (
-    <Carousel
-      data={data}
-      renderItem={renderItem}
-      itemWidth={scale(300)}
-      sliderWidth={width}
-    />
-  );
+  // Main Render
+  render() {
+    const { data } = this.props;
+    return (
+      <Carousel
+        data={data}
+        renderItem={this.renderItem}
+        itemWidth={scale(300)}
+        sliderWidth={width}
+      />
+    );
+  }
 }
 
 export default MyCarousel;
