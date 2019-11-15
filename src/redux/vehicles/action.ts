@@ -3,17 +3,17 @@ import { VEHICLES, VEHICLES_SUCCESS, VEHICLES_FAILED } from './types';
 import { vehicles } from '../../services/api';
 
 const loadingVeh = () => ({
-  type: VEHICLES,
+  type: VEHICLES
 });
 
 const successVeh = (data: any) => ({
   type: VEHICLES_SUCCESS,
-  data,
+  data
 });
 
 const failedVeh = (message: string) => ({
   type: VEHICLES_FAILED,
-  message,
+  message
 });
 
 export const actionVehicles = () => {
@@ -21,7 +21,7 @@ export const actionVehicles = () => {
     dispatch(loadingVeh());
     try {
       const res = await vehicles();
-      if(res.results !== null) {
+      if (res.results !== null) {
         return dispatch(successVeh(res.results));
       }
       return dispatch(failedVeh('Failed Get API'));

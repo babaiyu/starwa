@@ -27,4 +27,6 @@ export interface Props {
 
 export interface State {
   dataMovie: Array<object>;
+  modal: boolean;
+  contentModal: object;
 }

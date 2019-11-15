@@ -3,15 +3,18 @@ import {
   CHARACTERS_SUCCESS,
   CHARACTERS_FAILED,
   Action,
-  State,
+  State
 } from './types';
 
 const initialState: State = {
-  data: "",
+  data: '',
   isLoading: false
 };
 
-const charactersReducer = (state: State = initialState, action: Action): State => {
+const charactersReducer = (
+  state: State = initialState,
+  action: Action
+): State => {
   switch (action.type) {
     case CHARACTERS:
       return {
@@ -23,14 +26,14 @@ const charactersReducer = (state: State = initialState, action: Action): State =
       return {
         ...state,
         isLoading: false,
-        data: action.data,
+        data: action.data
       };
 
     case CHARACTERS_FAILED:
       return {
         ...state,
         isLoading: false,
-        data: "",
+        data: ''
       };
 
     default:

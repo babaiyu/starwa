@@ -1,19 +1,22 @@
 import React from 'react';
-import { Text } from 'react-native';
+import { Text, TouchableOpacity as Touch } from 'react-native';
 import PropTypes from 'prop-types';
 import Card from '../../../components/Card';
 import styles from './styles';
 
-export const ItemChar = ({ title, data }: any) => {
-  const { item, textNote, textCenter } = styles;
+export const ItemChar = (props: any): any => {
+  const { item, textNote } = styles;
+  const { onPress, title } = props;
   return (
-    <Card style={item}>
-      <Text style={textNote}>{title}</Text>
-    </Card>
+    <Touch onPress={onPress}>
+      <Card style={item}>
+        <Text style={textNote}>{title}</Text>
+      </Card>
+    </Touch>
   );
 }
 
 ItemChar.propTypes = {
-  data: PropTypes.any.isRequired,
   title: PropTypes.string.isRequired,
+  onPress: PropTypes.func.isRequired,
 };

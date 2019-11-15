@@ -3,7 +3,7 @@ import {
   PLANETS_SUCCESS,
   PLANETS_FAILED,
   Action,
-  State,
+  State
 } from './types';
 
 const initialState: State = {
@@ -23,14 +23,14 @@ const planetsReducer = (state: State = initialState, action: Action): State => {
       return {
         ...state,
         isLoading: false,
-        data: action.data,
+        data: action.data
       };
 
     case PLANETS_FAILED:
       return {
         ...state,
         isLoading: false,
-        data: [],
+        data: []
       };
 
     default:

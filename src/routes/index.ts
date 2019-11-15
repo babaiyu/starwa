@@ -22,7 +22,7 @@ const routes = createStackNavigator(
   },
   {
     initialRouteName: 'Home',
-    transitionConfig: () => zoomIn(),
+    transitionConfig: () => zoomIn()
   }
 );
 

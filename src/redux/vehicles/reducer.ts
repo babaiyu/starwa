@@ -3,7 +3,7 @@ import {
   VEHICLES_SUCCESS,
   VEHICLES_FAILED,
   Action,
-  State,
+  State
 } from './types';
 
 const initialState: State = {
@@ -11,7 +11,10 @@ const initialState: State = {
   isLoading: false
 };
 
-const vehiclesReducer = (state: State = initialState, action: Action): State => {
+const vehiclesReducer = (
+  state: State = initialState,
+  action: Action
+): State => {
   switch (action.type) {
     case VEHICLES:
       return {
@@ -23,14 +26,14 @@ const vehiclesReducer = (state: State = initialState, action: Action): State => 
       return {
         ...state,
         isLoading: false,
-        data: action.data,
+        data: action.data
       };
 
     case VEHICLES_FAILED:
       return {
         ...state,
         isLoading: false,
-        data: [],
+        data: []
       };
 
     default:

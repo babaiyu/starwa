@@ -12,7 +12,7 @@ const rootReducer = combineReducers({
   characters: charactersReducer,
   planets: planetsReducer,
   starships: starshipsReducer,
-  vehicles: vehiclesReducer,
+  vehicles: vehiclesReducer
 });
 
 // AutoComplete Type the Redux State

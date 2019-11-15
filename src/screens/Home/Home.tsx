@@ -1,8 +1,9 @@
 import React from 'react';
-import { View, Text, ScrollView, RefreshControl, ActivityIndicator } from 'react-native';
+import { View, Text, ScrollView, RefreshControl, ActivityIndicator, Alert } from 'react-native';
 import _ from 'lodash';
 import Wrap from '../../components/HOC';
 import { BarHome } from '../../components/StatusBar';
+import Modalin from '../../components/Modal';
 import { Props, State } from './types';
 import styles from './styles';
 import { themeColor } from '../../config/constant';
@@ -11,6 +12,7 @@ import SubHeader from './components/SubHeader';
 import Disclaimer from './components/Disclaimer';
 import Footer from './components/Footer';
 import { ItemChar } from './components/Item';
+import ContentModal from './components/ContentModal';
 
 class Home extends React.PureComponent<Props, State> {
   constructor(props: any) {
@@ -21,7 +23,9 @@ class Home extends React.PureComponent<Props, State> {
         { title: 'Planets', load: this.props.loadPlanets, data: this.props.planets },
         { title: 'Starships', load: this.props.loadStarships, data: this.props.starships },
         { title: 'Vehicles', load: this.props.loadVehicles, data: this.props.vehicles },
-      ]
+      ],
+      modal: false,
+      contentModal: {},
     }
   }
   componentDidMount() {
@@ -44,9 +48,23 @@ class Home extends React.PureComponent<Props, State> {
     navigate('Detail');
   }
 
+  // Show Modal
+  showModal = () => {
+    const { modal } = this.state;
+    this.setState({ modal: !modal });
+  };
+
+  setContentModal = (item: object) => {
+    requestAnimationFrame(() => {
+      this.setState({ contentModal: item }, () => {
+        this.showModal();
+      });
+    })
+  }
+
   render() {
     const { loadMovies, movies, loadCharacters, loadPlanets, loadStarships, loadVehicles } = this.props;
-    const { dataMovie } = this.state;
+    const { dataMovie, modal, contentModal } = this.state;
     const { padding, container, listContent, textNote } = styles;
     const result = _.reverse(movies);
     return (
@@ -71,7 +89,7 @@ class Home extends React.PureComponent<Props, State> {
                     {item.load
                       ? null
                       : item.data !== null
-                        ? <ItemChar title={item.title} data={item.data} />
+                        ? <ItemChar title={item.title} onPress={() => this.setContentModal(item.data)} />
                         : null}
                   </View>
                 ))
@@ -81,6 +99,17 @@ class Home extends React.PureComponent<Props, State> {
           <Disclaimer />
         </ScrollView>
         <Footer />
+
+        {/* Modal */}
+        <Modalin
+          isVisible={modal}
+          onBack={this.showModal}>
+          {
+            contentModal
+              ? <ContentModal data={contentModal} />
+              : null
+          }
+        </Modalin>
       </View>
     );
   }

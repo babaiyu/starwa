@@ -3,17 +3,17 @@ import { STARSHIPS, STARSHIPS_SUCCESS, STARSHIPS_FAILED } from './types';
 import { starships } from '../../services/api';
 
 const loadingStar = () => ({
-  type: STARSHIPS,
+  type: STARSHIPS
 });
 
 const successStar = (data: any) => ({
   type: STARSHIPS_SUCCESS,
-  data,
+  data
 });
 
 const failedStar = (message: string) => ({
   type: STARSHIPS_FAILED,
-  message,
+  message
 });
 
 export const actionStarships = () => {
@@ -21,7 +21,7 @@ export const actionStarships = () => {
     dispatch(loadingStar());
     try {
       const res = await starships();
-      if(res.results !== null) {
+      if (res.results !== null) {
         return dispatch(successStar(res.results));
       }
       return dispatch(failedStar('Failed Get API'));
