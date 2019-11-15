@@ -10,22 +10,38 @@ const headers = {
 };
 
 // Generate Response to JSON
-export function handleResponse(response: Response) {
-  return response.text().then(text => {
-    const data = text && JSON.parse(text);
-    return data;
-  });
-}
-
-// Function for Hit API
-export async function example() {
-  const EXAMPLE: string = 'https://jsonplaceholder.typicode.com/users';
-  const response = await fetch(EXAMPLE, headers);
-  return handleResponse(response);
+export async function handleResponse(response: Response) {
+  const text = await response.text();
+  const data = text && JSON.parse(text);
+  return data;
 }
 
 export async function movies() {
   const movieURL: string = `${SWAPI_URL}films`;
   const response = await fetch(movieURL, headers);
+  return handleResponse(response);
+}
+
+export async function characters() {
+  const charactersURL: string = `${SWAPI_URL}people`;
+  const response = await fetch(charactersURL, headers);
+  return handleResponse(response);
+}
+
+export async function planets() {
+  const planetURL: string = `${SWAPI_URL}planets`;
+  const response = await fetch(planetURL, headers);
+  return handleResponse(response);
+}
+
+export async function starships() {
+  const starshipsURL: string = `${SWAPI_URL}starships`;
+  const response = await fetch(starshipsURL, headers);
+  return handleResponse(response);
+}
+
+export async function vehicles() {
+  const vehiclesURL: string = `${SWAPI_URL}vehicles`;
+  const response = await fetch(vehiclesURL, headers);
   return handleResponse(response);
 }

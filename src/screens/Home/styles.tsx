@@ -10,7 +10,7 @@ export default StyleSheet.create({
     backgroundColor: themeColor.dark,
   },
   listContent: {
-    paddingTop: 20,
+    paddingTop: 10,
   },
   textNote: {
     fontFamily: fonts.fontSemiBold,

@@ -1,9 +1,9 @@
 import {
-  EXAMPLE,
-  EXAMPLE_SUCCESS,
-  EXAMPLE_FAILED,
+  STARSHIPS,
+  STARSHIPS_SUCCESS,
+  STARSHIPS_FAILED,
   Action,
-  State
+  State,
 } from './types';
 
 const initialState: State = {
@@ -11,26 +11,26 @@ const initialState: State = {
   isLoading: false
 };
 
-const exampleReducer = (state: State = initialState, action: Action): State => {
+const starshipsReducer = (state: State = initialState, action: Action): State => {
   switch (action.type) {
-    case EXAMPLE:
+    case STARSHIPS:
       return {
         ...state,
         isLoading: true
       };
 
-    case EXAMPLE_SUCCESS:
+    case STARSHIPS_SUCCESS:
       return {
         ...state,
         isLoading: false,
-        data: action.data
+        data: action.data,
       };
 
-    case EXAMPLE_FAILED:
+    case STARSHIPS_FAILED:
       return {
         ...state,
         isLoading: false,
-        data: []
+        data: [],
       };
 
     default:
@@ -38,4 +38,4 @@ const exampleReducer = (state: State = initialState, action: Action): State => {
   }
 };
 
-export default exampleReducer;
+export default starshipsReducer;

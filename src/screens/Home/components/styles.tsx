@@ -107,4 +107,16 @@ export default StyleSheet.create({
     alignItems: 'center',
     borderTopLeftRadius: 25,
   },
+
+  // Item
+  item: {
+    width: scale(100),
+    height: verticalScale(75),
+    backgroundColor: themeColor.blue,
+    padding: 10,
+    marginHorizontal: 5,
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: 10,
+  }
 });

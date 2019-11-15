@@ -2,6 +2,7 @@ import React from 'react';
 import { View, Text, ImageBackground, ScrollView, TouchableWithoutFeedback as Touch, FlatList } from 'react-native';
 import dayjs from 'dayjs';
 import Wrap from '../../components/HOC';
+import { BarTranslucent } from '../../components/StatusBar';
 import { Props, State } from './types';
 import styles from './styles';
 import Tabs from '../../components/Tabs';
@@ -80,6 +81,7 @@ class Detail extends React.PureComponent<Props, State> {
     const { body, content, imgBackground, title, textLight, textHighlight, textReguler, hr, columnDirection } = styles;
     return (
       <View style={body}>
+        <BarTranslucent />
         <BackButton onPress={this.back} />
         <ScrollView>
           <ImageBackground source={{ uri: img }} style={imgBackground} resizeMode="cover">
