@@ -2,16 +2,6 @@ import React from 'react';
 import { Text, TouchableOpacity, View } from 'react-native';
 import styles from './styles';
 
-// export default class Tabs extends React.Component {
-//   state = {
-//     activeTab: 0,
-//   };
-
-//   render({ children }: any = this.props) {
-
-//   }
-// }
-
 const Tabs = ({ children }: any) => {
   const [activeTab, changeTab] = React.useState(0);
   const onPress = (id: number) => {

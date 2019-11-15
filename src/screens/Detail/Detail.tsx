@@ -1,13 +1,12 @@
 import React from 'react';
-import { View, Text, ImageBackground, ScrollView, TouchableWithoutFeedback as Touch, FlatList, TouchableOpacity } from 'react-native';
-import Icon from 'react-native-vector-icons/Feather';
+import { View, Text, ImageBackground, ScrollView, TouchableWithoutFeedback as Touch, FlatList } from 'react-native';
 import dayjs from 'dayjs';
 import Wrap from '../../components/HOC';
 import { Props, State } from './types';
 import styles from './styles';
 import Tabs from '../../components/Tabs';
 import Card from '../../components/Card';
-import { themeColor } from '../../config/constant';
+import BackButton from './components/BackButton';
 
 const img = 'https://lumiere-a.akamaihd.net/v1/images/uk_sws-9_teaser-poster_r_002319f4.jpeg?region=0,0,960,1420';
 
@@ -78,12 +77,10 @@ class Detail extends React.PureComponent<Props, State> {
   render() {
     const { selectedMovies } = this.props;
     const { hideStory, detailMovie, detail } = this.state;
-    const { body, content, imgBackground, title, textLight, textHighlight, textReguler, hr, columnDirection, fab } = styles;
+    const { body, content, imgBackground, title, textLight, textHighlight, textReguler, hr, columnDirection } = styles;
     return (
       <View style={body}>
-        <TouchableOpacity onPress={this.back} style={fab}>
-          <Icon name="arrow-left" size={35} color={themeColor.dark} />
-        </TouchableOpacity>
+        <BackButton onPress={this.back} />
         <ScrollView>
           <ImageBackground source={{ uri: img }} style={imgBackground} resizeMode="cover">
           </ImageBackground>

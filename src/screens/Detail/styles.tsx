@@ -56,14 +56,4 @@ export default StyleSheet.create({
     justifyContent: 'center',
     borderRadius: 10
   },
-  fab: {
-    top: 20,
-    left: 20,
-    position: 'absolute',
-    paddingHorizontal: 15,
-    // width: scale(75),
-    backgroundColor: themeColor.bgWhite,
-    borderRadius: 30,
-    zIndex: 1
-  }
 });

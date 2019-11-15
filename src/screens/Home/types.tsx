@@ -6,5 +6,5 @@ export interface Props {
   actionSelectedMovies: (payload: object) => Promise<void>;
   movies: any;
   loadMovies: boolean;
-  data: any;
+  data: Array<object>;
 }

@@ -1,22 +1,24 @@
 import React from 'react';
-import { View, StyleSheet } from 'react-native';
-import { themeColor } from '../../config/constant';
-
-const styles = StyleSheet.create({
-  content: {
-    width: '100%',
-    borderRadius: 5,
-    backgroundColor: themeColor.semiGray
-  },
-});
+import { View, ViewPropTypes } from 'react-native';
+import PropTypes from 'prop-types';
+import styles from './styles';
 
 const Card = ({ children, style }: any) => {
   const { content } = styles;
   return (
-    <View style={[content, style || null]}>
+    <View style={[content, style]}>
       {children}
     </View>
   );
 };
 
 export default Card;
+
+Card.propTypes = {
+  children: PropTypes.any.isRequired,
+  style: ViewPropTypes.style,
+};
+
+Card.defaultProps = {
+  style: null,
+};

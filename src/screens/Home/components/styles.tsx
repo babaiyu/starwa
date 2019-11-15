@@ -53,5 +53,58 @@ export default StyleSheet.create({
   textBlue: {
     fontFamily: fonts.fontReguler,
     color: themeColor.blue
-  }
+  },
+
+  // Sub Header Style
+  subHeader: {
+    padding: 10,
+    width: '75%',
+    backgroundColor: themeColor.darkGray,
+    borderBottomRightRadius: 25,
+  },
+  textBold: {
+    fontFamily: fonts.fontBold,
+    color: themeColor.white,
+    fontSize: 25
+  },
+  textNote: {
+    fontFamily: fonts.fontSemiBold,
+    color: themeColor.white,
+  },
+
+  // Disclaimer
+  padding: {
+    padding: 10,
+  },
+  description: {
+    alignItems: 'center',
+  },
+  listContent: {
+    paddingTop: 20,
+  },
+  disclaimer: {
+    backgroundColor: themeColor.green,
+    alignItems: 'center',
+  },
+  icon: {
+    marginBottom: 5,
+  },
+  textCenter: {
+    fontFamily: fonts.fontLight,
+    color: themeColor.white,
+    textAlign: 'center',
+  },
+
+  // Footer
+  footer: {
+    width: '55%',
+    height: verticalScale(50),
+    right: 0,
+    bottom: 0,
+    position: 'absolute',
+    backgroundColor: themeColor.darkGray,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderTopLeftRadius: 25,
+  },
 });

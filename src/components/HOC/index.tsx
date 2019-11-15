@@ -1,5 +1,5 @@
 import React from 'react';
-import { SafeAreaView, ScrollView } from 'react-native';
+import { SafeAreaView } from 'react-native';
 import styles from './styles';
 
 const Wrap = <P extends object>(Component: React.ComponentType<P>) => {

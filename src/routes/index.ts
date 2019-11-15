@@ -1,5 +1,6 @@
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
+import { zoomIn } from 'react-navigation-transitions';
 
 import Home from '../screens/Home';
 import Detail from '../screens/Detail';
@@ -20,7 +21,8 @@ const routes = createStackNavigator(
     }
   },
   {
-    initialRouteName: 'Home'
+    initialRouteName: 'Home',
+    transitionConfig: () => zoomIn(),
   }
 );
 
