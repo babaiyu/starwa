@@ -1,4 +1,11 @@
-import { MOVIES, MOVIES_SUCCESS, MOVIES_FAILED, SELECTED_MOVIES, Action, State } from './types';
+import {
+  MOVIES,
+  MOVIES_SUCCESS,
+  MOVIES_FAILED,
+  SELECTED_MOVIES,
+  Action,
+  State
+} from './types';
 
 const initialState: State = {
   data: {},
@@ -33,7 +40,7 @@ const moviesReducer = (state: State = initialState, action: Action): State => {
         ...state,
         isLoading: false,
         selectedMovies: action.data
-      }
+      };
 
     default:
       return state;

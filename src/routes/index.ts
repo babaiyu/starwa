@@ -17,7 +17,7 @@ const routes = createStackNavigator(
       navigationOptions: {
         header: null
       }
-    },
+    }
   },
   {
     initialRouteName: 'Home'

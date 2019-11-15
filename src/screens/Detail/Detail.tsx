@@ -40,7 +40,9 @@ class Detail extends React.PureComponent<Props, State> {
   // Back to Home
   back = () => {
     const { navigation: { goBack } } = this.props;
-    goBack();
+    requestAnimationFrame(() => {
+      goBack();
+    })
   };
 
   // Flatlist
