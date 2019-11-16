@@ -5,7 +5,7 @@ import { themeColor, fonts } from '../../../config/constant';
 export default StyleSheet.create({
   contentCard: {
     width: scale(300),
-    height: verticalScale(200)
+    height: verticalScale(150)
   },
   rowDirection: {
     flexDirection: 'row',
