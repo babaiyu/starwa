@@ -1,6 +1,6 @@
 ## React Native TypeScript + Redux
 A Star War Collections Movie that you wanted before.
-this project is using [SWAPI.CO](https://swapi.co/){:target="_blank"} API
+this project is using [SWAPI.CO](https://swapi.co/) API
 
 ### Project Structure
 
