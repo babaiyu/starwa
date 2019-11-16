@@ -1,4 +1,4 @@
-## React Native TypeScript + Redux
+## Star Wars Movie List
 A Star War Collections Movie that you wanted before.
 this project is using [SWAPI.CO](https://swapi.co/) API
 
